@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Configuracón AP</title>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>
+        Configuración ssid
+    </title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Configuración ssid</h2>
+            <form action="/guardar" method="post">
+                <label for="ssidId">SSID:</label>
+                <input id="ssidId" name='ssid' type='text' class="form-control">
+                <label for="passId">PASSWORD:</label>
+                <input id="passId" name='pass' type='password' class="form-control"><br>
+                <button type="submit" value="Submit" class="btn btn-success">Guardar</button>
+            </form>
+            <br>
+            <form action="/app" method="post">
+                <button id="btnModo" type="submit" value="Submit" class="btn btn-success">Activar Modo AP</button><br>
+            </form>
+            <br>
+            <button id="btnBuscar" class="btn btn-info">Buscar</button>
+        </div>
+        <div id="redesId">
+
+        </div>
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/main.js">
+    </script>
+</body>
+
+</html>
