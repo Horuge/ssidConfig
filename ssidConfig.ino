@@ -285,9 +285,7 @@ void setup() {
   EEPROM.begin(512);
 
   pinMode(0, INPUT);
-  Serial.println("Comprobando lectura del pin");
-  Serial.println(digitalRead(0));
-
+  
   int cont = 0;
   int digitRead = 0;
   while(cont < 10 && !digitRead) {
