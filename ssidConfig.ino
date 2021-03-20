@@ -211,8 +211,6 @@ String readEEPROM(int addr) {
         strRead += (char)read;
       }
    }
-   Serial.print("Lectura de la EEPROM: ");
-   Serial.println(strRead);
    return strRead;
 }
 
