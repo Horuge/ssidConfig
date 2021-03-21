@@ -81,6 +81,10 @@ void setup_wifi() {
         request->send(400, "text/html", "Not found");
       });
 
+      /**
+       * Añádir aqui servicios a utilizar.
+       */
+
       server.begin();
       
   } else { 
@@ -144,7 +148,7 @@ void guardarModoAP(AsyncWebServerRequest *request) {
 
 
 void handleGuardar(AsyncWebServerRequest *request) {
-  String ssidPost = request->arg("ssid").c_str();
+  String ssidPost = request->arg("ssid");
   String passPost = request->arg("pass");
 
   guardarEEPROM(ssidPost, passPost);
@@ -166,6 +170,8 @@ void guardarEEPROM(String ssid, String pass) {
 
 /*
 * Graba en la EEPROM
+* int addr posición inicial EEPROM
+* String a String a guardar
 */
 void grabar(int addr, String a) {
   int len = a.length(); 
@@ -190,13 +196,6 @@ void grabarModoAP(bool modeAPState) {
   Serial.println(modeAPState);
   EEPROM.write(SIZE_EEPROM * 2, modeAPState);
   EEPROM.commit();
-}
-
-/*
-* Lee en la EEPROM el modo de operación
-*/
-void readModoAP() {
-  modeAPState = EEPROM.read(SIZE_EEPROM * 2);
 }
 
 /*
@@ -295,7 +294,7 @@ void setup() {
   }
 
   // Comprobamos si ejecutamos modo AP o no
-  readModoAP();
+  modeAPState = EEPROM.read(SIZE_EEPROM * 2);
 
   if (digitRead) {
     Serial.println("Modo configuracion ON");
